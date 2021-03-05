@@ -9,8 +9,7 @@ public class studentmain {
     }
     
     public static void kich_ban_3(){
-        menucontroller menu = new menucontroller(new studentcontroller(new studentview()), 
-                                new menuview());
+        menucontroller menu = new menucontroller(new studentcontroller(new studentview()), new menuview());
         menu.lua_chon_menu();
     }
     

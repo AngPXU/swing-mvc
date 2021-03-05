@@ -17,8 +17,6 @@ public class menucontroller {
         this.mnview = mnview;
     }
     
-    
-    
     public void lua_chon_menu(){
         int kq = mnview.hien_thi_menu();
         switch(kq){
