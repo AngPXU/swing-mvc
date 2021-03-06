@@ -58,4 +58,20 @@ public class FileAndDirectoryOperations {
         File[] ketqua = new File[result.size()];
         return result.toArray(ketqua);
     }
+    
+    //Thao tac 5: Duyet de quy xuat tac ca cac tap tin va thu muc
+    public void getContentRecursively(String folder){
+        File content = new File(folder);
+        //Dieu kien dung
+        if(content.isFile()){
+            System.out.println(content.getPath() + File.separator + content.getName());
+            return;
+        }
+        //Cau hoi de quy trong stack
+        System.out.println("Thu muc: " + folder);
+        File[] sub = content.listFiles();
+        for(int i = 0; i < sub.length; i++){
+            getContentRecursively(folder + File.separator + sub[i].getName());
+        }
+    }
 }
