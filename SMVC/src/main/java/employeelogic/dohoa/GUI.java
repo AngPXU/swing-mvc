@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package employeelogic.dohoa;
-
+import employeelogic.*;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ASUS
@@ -91,10 +94,7 @@ public class GUI extends javax.swing.JFrame {
 
         tblsinhvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Ho ten", "Ngay sinh", "Truong", "Hoc luc", "Hoc bong"
@@ -181,7 +181,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txthotensvActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        student obj = new student(txttruong.getText(), cbhocluc.getSelectedItem().toString(), txthotensv.getText(), cbgioitinhsv.getSelectedIndex(), dcngaysinhsv.getDate());
+        switch(obj.getHocluc()) {
+            case "Xuat sac":
+                    obj.setHocbong("1000");
+                    break;
+                case "Gioi":
+                    obj.setHocbong("855.5");
+                    break;
+                default:
+                    obj.setHocbong("0");
+        }
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        DefaultTableModel model = (DefaultTableModel)tblsinhvien.getModel();
+        model.insertRow(model.getRowCount(), new Object[]{model.getRowCount(), obj.getHoten(), df.format(obj.getNgaysinh()), obj.getTruonghoc(), obj.getHocluc(), obj.getHocbong()});
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
